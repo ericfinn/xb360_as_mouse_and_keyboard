@@ -6,12 +6,12 @@ GlovePIE scripts for using an XBox 360 controller in place of a mouse and keyboa
 WebBrowsing.PIE:
 Has generic web browsing mode, reddit mode (for use with RES), and tumblr mode.
 
-Mode | Action (Keyboard button) | XBox 360 Controller Button
+Mode | Action (Keyboard or Mouse Button) | XBox 360 Controller Button
 ---|---|---
 All | Switch Modes | Left Tumb Button
  | Move Mouse | Left Joystick
- | Mouse 4 (Back) | Left Bumper
- | Mouse 5 (Forward) | Right Bumper
+ | Back (Mouse 4) | Left Bumper
+ | Forward (Mouse 5) | Right Bumper
  | Scroll Down (Down) | Right Joystick Down
  | Scroll Up (Up) | Right Joystick Up
  | Close Tab (Ctrl+W) | Y
