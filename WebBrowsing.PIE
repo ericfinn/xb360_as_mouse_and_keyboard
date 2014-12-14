@@ -1,0 +1,43 @@
+﻿if starting then {
+    var.ControlType = 0
+    var.GenericMode = 0
+    var.RedditMode = 1
+    var.TumblrMode = 2
+    var.MaxMode = 2
+}
+
+if pressed(XInput1.LeftThumb) then {
+    var.ControlType++
+    if var.ControlType > var.MaxMode then var.ControlType = 0  
+    if var.ControlType == var.GenericMode then say("Generic Mode")
+    if var.ControlType == var.RedditMode then say("Reddit Mode")
+    if var.ControlType == var.TumblrMode then say("Tumbler Mode")
+}
+
+Mouse.DirectInputX = Mouse.DirectInputX + 25*deadzone(XInput1.Joy1X)
+Mouse.DirectInputY = Mouse.DirectInputY - 25*deadzone(XInput1.Joy1Y)
+Mouse.Button4 = XInput1.LeftShoulder
+Mouse.Button5 = XInput1.RightShoulder
+Down = XInput1.Joy2Y < -0.2
+Up = XInput1.Joy2Y > 0.2
+Ctrl+W = XInput1.Y
+
+if var.ControlType == var.GenericMode then { 
+    Mouse.LeftButton = XInput1.A
+    Mouse.RightButton = XInput1.X
+}
+if var.ControlType == var.RedditMode then {
+    J = XInput1.Joy2X > 0.2
+    K = XInput1.Joy2X < -0.2
+    X = XInput1.B
+    Shift+Enter = XInput1.A
+    Shift+C = XInput1.X
+    A = XInput1.Up
+    Z = XInput1.Down
+    RightBracket = XInput1.RightTrigger
+    LeftBracket = XInput1.LeftTrigger
+}               
+if var.ControlType == var.TumblrMode then { 
+    J = XInput1.Joy2X > 0.2
+    K = XInput1.Joy2X < -0.2
+}
