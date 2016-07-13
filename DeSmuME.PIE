@@ -1,0 +1,38 @@
+//Script for using XBox 360 controller to control the DeSmuME Nintendo DS emulator using default control settings
+
+if starting then {
+   var.dz = 0.15
+   var.XSensitivity = 30
+   var.YSensitivity = 30
+}
+
+//D-Pad from left analog stick
+if(DeadZone(XInput1.Joy1X, var.dz) != 0.0 or DeadZone(XInput.Joy1Y, var.dz) != 0) then
+    var.Angle = ArcTan2(XInput1.Joy1X, XInput.Joy1Y)
+    Up = var.Angle > -60.0 and var.Angle < 60.0
+    Down = var.Angle > 120.0 or var.Angle < -120.0
+    Left = var.Angle > -150.0 and var.Angle < -30.0
+    Right = var.Angle > 30.0 and var.Angle < 150.0
+else {
+    Up = Keyboard1.Up
+    Down = Keyboard1.Down
+    Left = Keyboard1.Left
+    Right = Keyboard1.Right
+}
+
+Z = XInput1.B
+X = XInput1.A
+A = XInput1.Y
+S = XInput1.X
+
+Key.Enter = XInput1.Start
+Key.RightShift = XInput1.Back
+
+Q = XInput1.LeftShoulder
+W = XInput1.RightShoulder
+
+//Mouse
+
+Mouse.DirectInputX = Mouse.DirectInputX + var.XSensitivity*deadzone(XInput1.Joy2X)
+Mouse.DirectInputY = Mouse.DirectInputY - var.YSensitivity*deadzone(XInput1.Joy2Y)
+Mouse.LeftButton = XInput.RightTrigger
